@@ -4,9 +4,7 @@ import Messages from "./components/Messages/Messages";
 
 const App = () => {
   return (
-    <>
       <Messages text="Den"/>
-    </>
   )
 }
 

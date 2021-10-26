@@ -36,6 +36,5 @@
     ]
   },
   "devDependencies": {
-    "css-loader": "^6.4.0"
   }
 }

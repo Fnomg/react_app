@@ -1,9 +1,14 @@
 import  "./Messages.css";
 
-const Messages = ({ text }) => {
+const Messages = ({ messageList }) => {
   return (
     <div className="messages">
-      <h3>hello, {text}</h3>
+      {messageList.map((message) => (
+        <div key={message.id}>
+          <h3>{message.text}</h3>
+          <div>{message.author}</div>
+        </div>
+      ))}
     </div>
   )
 };

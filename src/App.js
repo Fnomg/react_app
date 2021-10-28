@@ -1,11 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
+import Messages from "./components/Messages/Messages";
+
 
 const App = () => {
   return (
-    <>
-      d
-    </>
+      <Messages text="Den"/>
   )
 }
 

@@ -2,6 +2,16 @@ import './App.css';
 import Messages from "./components/Messages/Messages";
 import {useEffect , useState} from "react";
 import { v4 as uuidv4 } from 'uuid';
+import Button from '@mui/material/Button';
+import SendIcon from '@mui/icons-material/Send';
+import TextField from '@mui/material/TextField';
+import * as React from 'react';
+
+import List from '@mui/material/List';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+
+
 
 
 const App = () => {
@@ -31,12 +41,46 @@ const App = () => {
     setMessageList([...messageList, newMessage]);
   }
 
+  const chatLists = [
+    {
+      id: uuidv4(),
+      name: 'Ann'
+    },
+    {
+      id: uuidv4(),
+      name: 'Good'
+    }
+  ];
+
+
   return (
-      <>
-        <Messages messageList={messageList}/>
-        <input className="input" type="text" onChange={handleTextChange} value={textMessage}/>
-        <button onClick={()=>sendNewMessage('Ann')}>Отправить</button>
-      </>
+      <React.Fragment >
+        <div className="content">
+
+          <List component="nav" aria-label="secondary mailbox folder" className='nav'>
+            {chatLists.map((chat) => (
+              <ListItemButton key={chat.id}>
+                <ListItemText primary={chat.name}/>
+              </ListItemButton>
+              ))}
+          </List>
+
+          <div className="box">
+            <Messages messageList={messageList}/>
+            <TextField
+              id="outlined-multiline-flexible"
+              multiline
+              maxRows={4}
+              value={textMessage}
+              onChange={handleTextChange}
+              autoFocus
+            />
+            <Button onClick={()=>sendNewMessage('Ann')} variant="contained" endIcon={<SendIcon />} >
+              Send
+            </Button>
+          </div>
+        </div>
+      </React.Fragment>
 
   )
 }

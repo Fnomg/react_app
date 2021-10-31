@@ -1,13 +1,12 @@
 import  "./Messages.css";
+import Message from "../Message/Message";
 
 const Messages = ({ messageList }) => {
+
   return (
     <div className="messages">
       {messageList.map((message) => (
-        <div key={message.id}>
-          <h3>{message.text}</h3>
-          <div>{message.author}</div>
-        </div>
+        <Message message={message} key={message.id} />
       ))}
     </div>
   )

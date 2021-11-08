@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import Messages from "../Messages/Messages";
 import {Button, TextField} from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
@@ -8,6 +8,7 @@ export const MainSection = () => {
 
   const [messageList, setMessageList] = useState([]);
   const [textMessage, setTextMessage] = useState('');
+  const ref = useRef(null);
 
   useEffect(() => {
     let timer;
@@ -16,6 +17,10 @@ export const MainSection = () => {
     }
     return () => clearTimeout(timer);
   },[messageList]);
+
+  useEffect(()=>{
+    ref.current?.focus();
+  })
 
 
   function sendNewMessage (author = 'Good'){
@@ -42,6 +47,7 @@ export const MainSection = () => {
         value={textMessage}
         onChange={handleTextChange}
         autoFocus
+        inputRef={ref}
       />
       <Button onClick={()=>sendNewMessage('Ann')} variant="contained" endIcon={<SendIcon />} >
         Send
